@@ -1,0 +1,7 @@
+[
+  { "question": "What is the capital of France?", "answer": "Paris" },
+  { "question": "What is 2 + 2?", "answer": "4" },
+  { "question": "What is the chemical symbol for water?", "answer": "H2O" },
+  { "question": "Who wrote 'To be, or not to be'?", "answer": "William Shakespeare" },
+  { "question": "What is the speed of light?", "answer": "299,792,458 meters per second" }
+]
