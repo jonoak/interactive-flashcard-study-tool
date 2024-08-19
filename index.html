@@ -210,6 +210,39 @@
             }
             return array;
         }
+
+        // Add this listener for the flip button
+const flipButton = document.getElementById('flipButton');
+
+// Flip card functionality
+flipButton.addEventListener('click', () => {
+    flashcard.classList.toggle('flipped');
+    flipped = !flipped;
+});
+
+// Updated restart functionality
+restartButton.addEventListener('click', () => {
+    viewedCards.clear();
+    currentIndex = 0;
+    displayCard(currentIndex);
+});
+
+// Display card logic (ensure this is updated to handle flip state)
+function displayCard(index) {
+    if (cardsData.length > 0) {
+        const card = cardsData[index];
+        cardFront.textContent = card.question;
+        cardBack.textContent = card.answer;
+        flashcard.classList.remove('flipped');  // Ensure card is reset to front
+        flipped = false;
+        if (viewedCards.has(index)) {
+            flashcard.style.border = '2px solid green';
+        } else {
+            flashcard.style.border = '1px solid #ccc';
+        }
+    }
+}
+
     </script>
 </body>
 </html>
