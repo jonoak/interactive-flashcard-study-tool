@@ -2,18 +2,23 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Align the card towards the top */
     height: 100vh;
     margin: 0;
     background-color: #f8f9fa;
+    padding-top: 20px;  /* Adds some space from the top */
 }
 
 .container {
     text-align: center;
+    width: 100%;  /* Ensure the container takes the full width */
+    max-width: 400px;  /* Set a max width for better mobile layout */
+    padding: 0 10px;  /* Adds padding to ensure buttons are not too close to the edges */
 }
 
 .flashcard {
-    width: 300px;
+    width: 100%;  /* Make the flashcard width responsive */
+    max-width: 300px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
@@ -35,19 +40,48 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     font-size: 1.2em;
     padding: 20px;
+    box-sizing: border-box;  /* Include padding in the element's width and height */
 }
 
 .flashcard .back {
     transform: rotateY(180deg);
 }
 
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 .controls button {
-    margin: 10px;
-    padding: 10px 20px;
+    flex: 1;  /* Allow buttons to grow and fill available space */
+    margin: 0 5px;  /* Adds space between buttons */
+    padding: 10px;
     font-size: 1em;
     cursor: pointer;
 }
 
 .flipped {
     transform: rotateY(180deg);
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+    .flashcard {
+        max-width: 100%;  /* Ensure the flashcard is not wider than the screen */
+        height: 150px;  /* Reduce height for better fit on mobile */
+    }
+
+    .flashcard .front, .flashcard .back {
+        font-size: 1em;  /* Slightly smaller font size on mobile */
+    }
+
+    .controls {
+        flex-direction: column;  /* Stack buttons vertically */
+        align-items: center;
+    }
+
+    .controls button {
+        margin: 5px 0;  /* Adjust margin for vertical stacking */
+    }
 }
