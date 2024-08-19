@@ -227,6 +227,17 @@ restartButton.addEventListener('click', () => {
     displayCard(currentIndex);
 });
 
+// Flip card when clicking directly on the flashcard
+flashcard.addEventListener('click', () => {
+    flashcard.classList.toggle('flipped');
+    flipped = !flipped;
+});
+
+// Keep the flip button functionality as well
+flipButton.addEventListener('click', () => {
+    flashcard.classList.toggle('flipped');
+    flipped = !flipped;
+});
 
 
     </script>
