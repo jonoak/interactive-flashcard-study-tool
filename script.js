@@ -1,11 +1,12 @@
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBnFvFKIZ2XBL3YGX-wGvB7quQiXuiHrCA",
+  authDomain: "flashcards-bfb96.firebaseapp.com",
+  projectId: "flashcards-bfb96",
+  storageBucket: "flashcards-bfb96.appspot.com",
+  messagingSenderId: "114283037265",
+  appId: "1:114283037265:web:eb4710cd80df4f599aae70",
+  measurementId: "G-915828YW5G"
 };
 
 // Initialize Firebase
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Google Sign-In
     googleSignInButton.addEventListener('click', () => {
         console.log("Google Sign-In button clicked");
+        console.log("Signing in...");
+        
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
