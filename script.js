@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardFront = document.getElementById('card-front');
     const cardBack = document.getElementById('card-back');
     const prevButton = document.getElementById('prevButton');
-    const flipButton = document.getElementById('flipButton');
     const nextButton = document.getElementById('nextButton');
     const shuffleButton = document.getElementById('shuffleButton');
     const restartButton = document.getElementById('restartButton');
@@ -21,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error loading JSON:', error));
 
+    flashcard.addEventListener('click', () => {
+        flashcard.classList.toggle('flipped');
+        flipped = !flipped;
+        if (flipped) {
+            viewedCards.add(currentIndex);
+        }
+    });
+
     prevButton.addEventListener('click', () => {
         if (currentIndex > 0) {
             currentIndex--;
@@ -32,14 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIndex < cardsData.length - 1) {
             currentIndex++;
             displayCard(currentIndex);
-        }
-    });
-
-    flipButton.addEventListener('click', () => {
-        flashcard.classList.toggle('flipped');
-        flipped = !flipped;
-        if (flipped) {
-            viewedCards.add(currentIndex);
         }
     });
 
