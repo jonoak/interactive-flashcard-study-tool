@@ -10,9 +10,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
 
 document.addEventListener('DOMContentLoaded', () => {
     const googleSignInButton = document.getElementById('googleSignIn');
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Google Sign-In button clicked");
         console.log("Signing in...");
         
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider)
             .then((result) => {
                 console.log("User signed in:", result.user);
                 googleSignInButton.style.display = 'none';
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sign out
     signOutButton.addEventListener('click', () => {
         console.log("Sign Out button clicked");
-        signOut(auth).then(() => {
+        auth.signOut().then(() => {
             console.log("User signed out");
             googleSignInButton.style.display = 'inline-block';
             signOutButton.style.display = 'none';
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load user data from Firestore
     function loadUserData(uid) {
         console.log("Loading user data for UID:", uid);
-        const userDoc = doc(db, "users", uid);
-        getDoc(userDoc).then((docSnap) => {
-            if (docSnap.exists()) {
+        const userDoc = db.collection("users").doc(uid);
+        userDoc.get().then((docSnap) => {
+            if (docSnap.exists) {
                 cardsData = docSnap.data().flashcards;
                 console.log("User data loaded:", cardsData);
                 displayCard(currentIndex);
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save user data to Firestore
     function saveUserData(uid, data) {
         console.log("Saving user data for UID:", uid);
-        const userDoc = doc(db, "users", uid);
-        setDoc(userDoc, { flashcards: data }, { merge: true })
+        const userDoc = db.collection("users").doc(uid);
+        userDoc.set({ flashcards: data }, { merge: true })
             .then(() => {
                 console.log("Document successfully written!");
             })
