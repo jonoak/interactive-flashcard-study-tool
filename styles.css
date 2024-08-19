@@ -17,6 +17,10 @@ body {
     margin-top: 20px; /* Add some space around the card */
 }
 
+.flipped {
+    transform: rotateY(180deg);
+}
+
 .flashcard {
     width: 100%;
     max-width: 300px;
