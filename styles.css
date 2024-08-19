@@ -2,29 +2,32 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start;  /* Align the card towards the top */
+    align-items: flex-start;
     height: 100vh;
     margin: 0;
     background-color: #f8f9fa;
-    padding-top: 20px;  /* Adds some space from the top */
+    padding-top: 20px;
 }
 
 .container {
     text-align: center;
-    width: 100%;  /* Ensure the container takes the full width */
-    max-width: 400px;  /* Set a max width for better mobile layout */
-    padding: 0 10px;  /* Adds padding to ensure buttons are not too close to the edges */
+    width: 100%;
+    max-width: 400px;
+    padding: 0 10px;
+    margin-top: 20px; /* Add some space around the card */
 }
 
 .flashcard {
-    width: 100%;  /* Make the flashcard width responsive */
+    width: 100%;
     max-width: 300px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
     cursor: pointer;
-    margin: 0 auto;
+    margin: 20px auto; /* Adjust margin for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .flashcard .front, .flashcard .back {
@@ -37,10 +40,11 @@ body {
     align-items: center;
     border: 1px solid #ccc;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 1.2em;
     padding: 20px;
-    box-sizing: border-box;  /* Include padding in the element's width and height */
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .flashcard .back {
@@ -54,34 +58,39 @@ body {
 }
 
 .controls button {
-    flex: 1;  /* Allow buttons to grow and fill available space */
-    margin: 0 5px;  /* Adds space between buttons */
+    flex: 1;
+    margin: 0 5px;
     padding: 10px;
     font-size: 1em;
     cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
 }
 
-.flipped {
-    transform: rotateY(180deg);
+.controls button:hover {
+    background-color: #0056b3;
 }
 
 /* Mobile-specific adjustments */
 @media (max-width: 480px) {
     .flashcard {
-        max-width: 100%;  /* Ensure the flashcard is not wider than the screen */
-        height: 150px;  /* Reduce height for better fit on mobile */
+        max-width: 100%;
+        height: 150px;
     }
 
     .flashcard .front, .flashcard .back {
-        font-size: 1em;  /* Slightly smaller font size on mobile */
+        font-size: 1em;
     }
 
     .controls {
-        flex-direction: column;  /* Stack buttons vertically */
+        flex-direction: column;
         align-items: center;
     }
 
     .controls button {
-        margin: 5px 0;  /* Adjust margin for vertical stacking */
+        margin: 5px 0;
     }
 }
